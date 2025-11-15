@@ -9,3 +9,19 @@ A lightweight MovieLens-based recommendation system with a scalable architecture
 - The user–item matrix is ~94% sparse  
 
 These insights justify using **matrix factorization** as the next modeling step.
+
+## 🧪 Baseline Models (Hour 3)
+
+I implemented two interview-standard baseline recommenders:
+
+### 1. Random Recommender
+- Recommends `k` random unseen movies.
+- Hit@10 ≈ 0.01  
+- Serves as a sanity check.
+
+### 2. Global Popularity Recommender
+- Recommends globally most-rated movies the user has not seen.
+- Hit@10 ≈ 0.06–0.09  
+- Strong baseline for MF uplift comparison.
+
+These create a measurable baseline to improve upon with matrix factorization in Hour 5.
