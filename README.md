@@ -10,9 +10,9 @@ A lightweight MovieLens-based recommendation system with a scalable architecture
 
 These insights justify using **matrix factorization** as the next modeling step.
 
-## 🧪 Baseline Models (Hour 3)
+## 🧪 Baseline Models
 
-I implemented two interview-standard baseline recommenders:
+I implemented two baseline recommenders:
 
 ### 1. Random Recommender
 - Recommends `k` random unseen movies.
@@ -24,4 +24,4 @@ I implemented two interview-standard baseline recommenders:
 - Hit@10 ≈ 0.06–0.09  
 - Strong baseline for MF uplift comparison.
 
-These create a measurable baseline to improve upon with matrix factorization in Hour 5.
+These create a measurable baseline to improve upon with matrix factorization.
