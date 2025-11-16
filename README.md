@@ -77,7 +77,7 @@ In addition, the project includes:
 ---
 ## 4. Architecture
 
-```mermaid
+` ` `mermaid
 flowchart LR
 
   U[User] --> REQ[Request]
@@ -101,6 +101,7 @@ flowchart LR
   end
 
   TOPK --> U
+` ` `
 ---
 
 ## 5. Modeling Approach
