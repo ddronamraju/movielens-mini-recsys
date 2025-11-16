@@ -33,7 +33,7 @@ To move beyond simple baselines (random and popularity), I implemented a lightwe
 via **TruncatedSVD**. This provides compact latent representations of users and movies and enables
 personalized Top-N recommendations.
 
-### ⭐ What was done in Hour 4
+### ⭐ What was done in this section
 - Constructed a **user–item sparse matrix** from the MovieLens ratings.
 - Applied **TruncatedSVD** (rank-k factorization) to derive:
   - **User latent factors** (U ∈ ℝᵘˢᵉʳˢ×ᵏ)
