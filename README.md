@@ -1,4 +1,4 @@
-# movielens-mini-recsys
+# Scalable Recommendation System
 A lightweight MovieLens-based recommendation system with a scalable architecture discussion.
 
 ## 📊 EDA Summary (MovieLens 100K)
