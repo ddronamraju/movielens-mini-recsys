@@ -77,15 +77,14 @@ In addition, the project includes:
 ---
 ## 4. Architecture
 
-The system is organized as a two-stage recommendation pipeline with a training and feedback loop:
-
 ```mermaid
 flowchart LR
-  U[User] --> REQ[Recommendation Request]
 
-  subgraph RecSysEngine[Recommendation Engine]
-    REQ --> CG[Candidate Generation (SVD)]
-    CG --> RANK[Ranking (LightGBM)]
+  U[User] --> REQ[Request]
+
+  subgraph Engine[Recommendation Engine]
+    REQ --> CG[Candidate Generation - SVD]
+    CG --> RANK[Ranking - LightGBM]
     RANK --> TOPK[Top-K Recommendations]
   end
 
@@ -93,16 +92,15 @@ flowchart LR
     TOPK --> LOG[Interaction Logs]
   end
 
-  subgraph Training[Offline Training Pipeline]
+  subgraph Train[Training Pipeline]
     LOG --> FEAT[Feature Engineering]
     FEAT --> SVDM[Train SVD Model]
-    FEAT --> LGBM[Train LightGBM Ranker]
+    FEAT --> LGBM[Train LightGBM Model]
     SVDM --> CG
     LGBM --> RANK
   end
 
   TOPK --> U
-
 ---
 
 ## 5. Modeling Approach
