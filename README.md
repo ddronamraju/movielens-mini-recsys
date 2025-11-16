@@ -75,44 +75,33 @@ In addition, the project includes:
 - Lightweight logging and monitoring hooks.
 
 ---
-
 ## 4. Architecture
 
-The following diagram summarizes the conceptual architecture implemented in this repo.
+The system is organized as a two-stage recommendation pipeline with a training and feedback loop:
 
 ```mermaid
 flowchart LR
+  U[User] --> REQ[Recommendation Request]
 
-subgraph User Interaction Layer
-U[User] --> REQ[Recommendation Request]
-END
+  subgraph RecSysEngine[Recommendation Engine]
+    REQ --> CG[Candidate Generation (SVD)]
+    CG --> RANK[Ranking (LightGBM)]
+    RANK --> TOPK[Top-K Recommendations]
+  end
 
-subgraph RecSys Engine
-REQ --> CG[Candidate Generation<br/>SVD Matrix Factorization]
-CG --> RANK[Ranking<br/>LightGBM Model]
-RANK --> TOPK[Top-K Recommendations]
-END
+  subgraph Logging[Logging & Feedback]
+    TOPK --> LOG[Interaction Logs]
+  end
 
-subgraph Logging Layer
-TOPK --> LOG[Impression & Interaction Logging]
-END
+  subgraph Training[Offline Training Pipeline]
+    LOG --> FEAT[Feature Engineering]
+    FEAT --> SVDM[Train SVD Model]
+    FEAT --> LGBM[Train LightGBM Ranker]
+    SVDM --> CG
+    LGBM --> RANK
+  end
 
-subgraph Training Pipeline
-LOG --> FEAT[Feature Engineering<br/>User/Item/Interaction Features]
-FEAT --> SVDM[SVD Model Training]
-FEAT --> LGBM[LightGBM Ranker Training]
-SVDM --> CG
-LGBM --> RANK
-END
-
-TOPK --> U
-```
-
-While the implementation is intentionally small and local, this structure maps directly to larger systems that use:
-
-- Embedding services and ANN search for candidate generation.
-- Feature stores and ranking services for scoring.
-- Logging pipelines for training and monitoring.
+  TOPK --> U
 
 ---
 
