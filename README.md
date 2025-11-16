@@ -1,11 +1,17 @@
 # Mini Video Recommendation System (MovieLens)
 
-A compact, end-to-end implementation of a **modern video recommendation system** inspired by large-scale platforms (e.g., YouTube-style architectures), built on top of the MovieLens-100K dataset.
+## ⭐ Project Summary
 
-The goal of this project is to demonstrate how to design and implement a **two-stage recommender system**:
+This project implements a compact, end-to-end video recommendation system inspired by the retrieval-and-ranking architectures used in modern platforms such as YouTube. Using the MovieLens-100K dataset as a proxy for video interactions, the system is structured to resemble a realistic production pipeline while remaining fully runnable on a laptop.
 
-1. **Candidate Generation** – quickly retrieve a small set of relevant items for a user.
-2. **Ranking** – score those candidates with a richer feature set and output a final Top‑K list.
+The pipeline consists of:
+
+- **Candidate Generation** using TruncatedSVD to quickly retrieve potentially relevant items.
+- **Ranking** using a LightGBM model trained on user, item, and interaction features.
+- **Evaluation** with metrics such as Hit@K, Recall@K, and NDCG@K.
+- **A/B-style policy simulation**, demonstrating how different recommendation policies perform.
+- **Feedback loop simulation** to illustrate how models can be refreshed as new data arrives.
+- **Lightweight monitoring and logging** for traceability and inspection.
 
 Although the project runs on a laptop with a small dataset, the structure, metrics, and components are designed to mirror patterns used in production systems described in:
 
