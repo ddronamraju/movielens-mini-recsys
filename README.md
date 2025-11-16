@@ -75,9 +75,10 @@ In addition, the project includes:
 - Lightweight logging and monitoring hooks.
 
 ---
+
 ## 4. Architecture
 
-` ` `mermaid
+```mermaid
 flowchart LR
 
   U[User] --> REQ[Request]
@@ -101,7 +102,8 @@ flowchart LR
   end
 
   TOPK --> U
-` ` `
+```
+
 ---
 
 ## 5. Modeling Approach
@@ -376,6 +378,6 @@ The current implementation is intentionally modest, but it is structured so that
   Separate the computation and serving of features into a feature store to ensure online/offline consistency.
 
 - **Real serving layer**  
-  Wrap the `recommend()` function in a FastAPI (or similar) microservice and integrate logging into astream processor.
+  Wrap the `recommend()` function in a FastAPI (or similar) microservice and integrate logging into a stream processor.
 
 This project is meant to serve as a compact yet realistic reference implementation of a modern video recommendation pipeline, with enough structure to be extended toward production scenarios.
